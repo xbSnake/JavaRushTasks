@@ -16,28 +16,31 @@ public class Solution {
         ArrayList<String> list = new ArrayList<>();
        int maxIndex=0;
        int minIndex=0;
-        int max = 0;
+
         for(int i=0;i<10; i++) {
             String s = reader.readLine();
             list.add(s);
         }
         int min = list.get(0).length();
+        int max = 0;
 
         for(int i=0;i<10; i++) {
 
-            if(max > list.get(i).length() ){
+            if( list.get(i).length()>max  ){
                 max = list.get(i).length();
                 maxIndex  = i;
             }
 
 
-           if(min < list.get(i).length()) {
+           if( list.get(i).length()< min ) {
                 min = list.get(i).length();
               minIndex = i;
            }
         }
-        System.out.println(list.get(maxIndex));
-        System.out.println(list.get(minIndex));
+        if(minIndex<maxIndex)
+            System.out.println(list.get(minIndex));
+        else
+            System.out.println(list.get(maxIndex));
 
     }
 }
