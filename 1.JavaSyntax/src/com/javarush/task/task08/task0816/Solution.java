@@ -18,7 +18,7 @@ public class Solution {
         map.put("Cahol", new Date("JANUARY 4 1999"));
         map.put("Camol", new Date("JANUARY 5 1999"));
         map.put("Cakol", new Date("JANUARY 6 1999"));
-        map.put("Caol", new Date("SEPTEMBER 7 1999"));
+        map.put("Caol",  new Date("SEPTEMBER 7 1999"));
         map.put("Caotl", new Date("MAY 8 1999"));
         map.put("Caowl", new Date("JUNE 9 1959"));
         map.put("Caoel", new Date("JANUARY 10 1994"));
@@ -29,13 +29,17 @@ public class Solution {
     public static void removeAllSummerPeople(HashMap<String, Date> map) {
         for(Map.Entry<String, Date> pair : map.entrySet())
           if(pair.getValue().getMonth()>=5 && pair.getValue().getMonth()<=7)
-                map.remove(pair);
+                map.remove(pair.getKey());
+
+        for(Map.Entry<String, Date> pair : map.entrySet())
+            System.out.println(pair.getKey()+ "" + pair.getValue()+" "+ pair.getValue().getMonth());
 
        }
 
     public static void main(String[] args) {
 
-
+        HashMap<String, Date> map = createMap();
+        removeAllSummerPeople(map);
 
     }
 }
