@@ -1,9 +1,8 @@
 package com.javarush.task.task08.task0816;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+
+
+import java.util.*;
 
 /* 
 Добрая Зинаида и летние каникулы
@@ -27,19 +26,23 @@ public class Solution {
     }
 
     public static void removeAllSummerPeople(HashMap<String, Date> map) {
-        for(Map.Entry<String, Date> pair : map.entrySet())
-          if(pair.getValue().getMonth()>=5 && pair.getValue().getMonth()<=7)
-                map.remove(pair.getKey());
+        Iterator<Map.Entry<String,Date>> iterator = map.entrySet().iterator();
 
-        for(Map.Entry<String, Date> pair : map.entrySet())
-            System.out.println(pair.getKey()+ "" + pair.getValue()+" "+ pair.getValue().getMonth());
+        while(iterator.hasNext()) {
+            Map.Entry<String,Date> pair = iterator.next();
+            if (pair.getValue().getMonth() >= 5 && pair.getValue().getMonth() <= 7) {
+                map.remove(pair.getKey());
+                iterator = map.entrySet().iterator();
+            }
+
+        }
+
 
        }
 
     public static void main(String[] args) {
 
-        HashMap<String, Date> map = createMap();
-        removeAllSummerPeople(map);
+
 
     }
 }
