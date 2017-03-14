@@ -16,7 +16,7 @@ public class Solution {
     }
 
     public static ArrayList<int[]> createList() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
 
         ArrayList<int[]> list = new ArrayList<>();
         int[] int5 = new int[5];
@@ -25,14 +25,20 @@ public class Solution {
         int[] int7 = new int[7];
         int[] int0 = new int[0];
 
-        for(int a:int5)
-            a = Integer.parseInt(reader.readLine());
-        for(int a:int2)
-            a = Integer.parseInt(reader.readLine());
-        for(int a:int4)
-            a = Integer.parseInt(reader.readLine());
-        for(int a:int7)
-            a = Integer.parseInt(reader.readLine());
+        for(int i=0;i<int5.length;i++)
+            int5[i] = i;
+
+        for(int i=0;i<int2.length;i++)
+            int2[i] =i;
+
+        for(int i=0;i<int4.length;i++)
+            int4[i] = i;
+
+        for(int i=0;i<int7.length;i++)
+            int7[i] = i;
+
+        for(int i=0;i<int0.length;i++)
+            int0[i] =i;
 
         list.add(int5);
         list.add(int2);
