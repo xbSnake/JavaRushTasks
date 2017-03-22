@@ -12,14 +12,19 @@ public class Solution {
        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
        String path = reader.readLine();
+       InputStream inStram = new FileInputStream(path);
 
-        InputStream inStram = new FileInputStream(path);
+       byte[] data = new byte[inStram.available()];
 
+        int i=0;
         while(inStram.available()>0){
-            int data = inStram.read();
 
-            System.out.print((char)data);
+            data[i] =(byte)inStram.read();
+            i++;
+
         }
+        System.out.println(new String (data));
+
         inStram.close();
         reader.close();
     }
