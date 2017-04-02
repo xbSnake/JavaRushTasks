@@ -4,7 +4,7 @@ public class Waiter implements Runnable {
     public boolean continueWorking = true;
 
     @Override
-    public void run() {
+    public synchronized  void run() {
         Manager manager = Manager.getInstance();
         synchronized (manager.getDishesQueue()){
         while (continueWorking || !manager.getDishesQueue().isEmpty()) {
