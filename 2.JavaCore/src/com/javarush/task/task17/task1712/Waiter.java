@@ -6,7 +6,7 @@ public class Waiter implements Runnable {
     @Override
     public void run() {
         Manager manager = Manager.getInstance();
-
+        synchronized (manager.getDishesQueue()){
         while (continueWorking || !manager.getDishesQueue().isEmpty()) {
             if (!manager.getDishesQueue().isEmpty()) {       //относим готовый заказ
                 Dishes dishes = manager.getDishesQueue().poll();
@@ -21,6 +21,6 @@ public class Waiter implements Runnable {
                 Thread.sleep(100);  //walking to the next table
             } catch (InterruptedException e) {
             }
-        }
+        }}
     }
 }
