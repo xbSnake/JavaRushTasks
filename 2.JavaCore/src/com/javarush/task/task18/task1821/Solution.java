@@ -15,7 +15,7 @@ public class Solution {
 
         FileInputStream in = new FileInputStream(args[0]);
 
-        Map<Character, Integer > map = new TreeMap<>();
+        TreeMap<Character, Integer > map = new TreeMap<>();
 
         while ((in.available()>0)) {
             char ch = (char)in.read();

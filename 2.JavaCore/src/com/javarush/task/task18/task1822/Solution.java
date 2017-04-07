@@ -22,7 +22,7 @@ public class Solution {
             if (s==null)
                 break;
 
-            if(id==Integer.parseInt( s  .split(" ")[0])){
+            if(id==Integer.parseInt( s.split(" ")[0])){
                 System.out.println(s);
                 break;
             }
