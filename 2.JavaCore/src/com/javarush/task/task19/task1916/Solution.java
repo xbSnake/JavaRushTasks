@@ -15,8 +15,8 @@ public class Solution {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader fileReader1 = new BufferedReader( new FileReader(reader.readLine()));
         BufferedReader fileReader2 = new BufferedReader( new FileReader(reader.readLine()));
-        ArrayList list1 = new ArrayList();
-        ArrayList list2 = new ArrayList();
+        ArrayList<String> list1 = new ArrayList();
+        ArrayList<String> list2 = new ArrayList();
 
         while (fileReader1.ready()){
             list1.add(fileReader1.readLine());
@@ -25,22 +25,46 @@ public class Solution {
             list2.add(fileReader2.readLine());
         }
 
+        reader.close();
+        fileReader1.close();
+        fileReader2.close();
+
         boolean stoped=false;
         int i=0;
-        while(!stoped){
-            if(list1.get(i).equals(list2.get(i))&& i<list1.size()-1 && i<list2.size()-1)
-                i++;
-            else if(list1.get(i).equals(list2.get(i+1))&& i<list1.size()-1 && i<list2.size()-1){
-                list1.add(i," ");
-                i++;}
-            else if(list1.get(i+1).equals(list2.get(i))&& i<list1.size()-1 && i<list2.size()-1){
-                list2.add(i," ");
-                i++;}
-
+        while(i<list1.size() || i<list2.size()){
+            try {
+                if (list1.get(i).equals(list2.get(i)) )
+                    i++;
+                else if (list1.get(i).equals(list2.get(i + 1))) {
+                    list1.add(i, " ");
+                    i++;
+                } else if (list1.get(i + 1).equals(list2.get(i)) ) {
+                    list2.add(i, " ");
+                    i++;
+                }
+            }catch(IndexOutOfBoundsException e ){
+                if(list1.size()<list2.size()){
+                    list1.add(" ");
+                    i++;}
+                else {
+                    list2.add(" ");
+                    i++;
+                }
+            }
 
         }
 
-        System.out.println("ss");
+
+        for(int j=0; j<list1.size(); j++){
+            if(list1.get(j).equals(" "))
+                lines.add(new LineItem(Type.ADDED, list2.get(j)));
+            else if(list2.get(j).equals(" "))
+                lines.add(new LineItem(Type.REMOVED, list1.get(j)));
+            else
+                lines.add(new LineItem(Type.SAME, list1.get(j)));
+        }
+
+
     }
 
 
